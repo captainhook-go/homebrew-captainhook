@@ -18,7 +18,6 @@ class Captainhook < Formula
 
       def install
         bin.install "captainhook"
-        ln_s "captainhook", "#{HOMEBREW_PREFIX}/bin/git-ch", :force => true
       end
     end
     if Hardware::CPU.intel?
@@ -27,7 +26,6 @@ class Captainhook < Formula
 
       def install
         bin.install "captainhook"
-        ln_s captainhook, "#{HOMEBREW_PREFIX}/bin/git-ch", :force => true
       end
     end
   end
@@ -39,7 +37,6 @@ class Captainhook < Formula
 
       def install
         bin.install "captainhook"
-        ln_s captainhook, "#{HOMEBREW_PREFIX}/bin/git-ch", :force => true
       end
     end
     if Hardware::CPU.intel?
@@ -48,7 +45,6 @@ class Captainhook < Formula
 
       def install
         bin.install "captainhook"
-        ln_s captainhook, "#{HOMEBREW_PREFIX}/bin/git-ch", :force => true
       end
     end
   end
