@@ -18,7 +18,7 @@ class Captainhook < Formula
 
       def install
         bin.install "captainhook"
-        ln_s captainhook, "#{HOMEBREW_PREFIX}/bin/git-ch", :force => true
+        ln_s "captainhook", "#{HOMEBREW_PREFIX}/bin/git-ch", :force => true
       end
     end
     if Hardware::CPU.intel?
