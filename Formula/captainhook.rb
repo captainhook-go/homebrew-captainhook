@@ -5,24 +5,24 @@
 class Captainhook < Formula
   desc "CaptainHook is a flexible git hooks manager that makes sharing git hooks a breeze"
   homepage "http://captainhook.info/"
-  version "1.0.5"
+  version "1.0.6"
   license "MIT"
 
   depends_on "git"
   depends_on "zsh" => :optional
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/captainhook-go/captainhook/releases/download/1.0.5/captainhook_Darwin_arm64.tar.gz"
-      sha256 "f335e2dc511ba82202f562be58774aff412cdd0faf37cc00e2c5441e8f67710a"
+    on_intel do
+      url "https://github.com/captainhook-go/captainhook/releases/download/1.0.6/captainhook_Darwin_x86_64.tar.gz"
+      sha256 "0918b418116e2c1e5975341fa15d30f5f76695decb5c08eaab3d23d9f7026ac8"
 
       def install
         bin.install "captainhook"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/captainhook-go/captainhook/releases/download/1.0.5/captainhook_Darwin_x86_64.tar.gz"
-      sha256 "89c3e36c907a30a92ec8f1e8d5aead9f4333e044e9be4c222f64e116bd654457"
+    on_arm do
+      url "https://github.com/captainhook-go/captainhook/releases/download/1.0.6/captainhook_Darwin_arm64.tar.gz"
+      sha256 "d3d5074569ebc7f1d03bedcd7aabf695906e147d1e8cbe4ed072e185dc49e8ea"
 
       def install
         bin.install "captainhook"
@@ -31,20 +31,24 @@ class Captainhook < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/captainhook-go/captainhook/releases/download/1.0.5/captainhook_Linux_arm64.tar.gz"
-      sha256 "88417106a587f27f3a330787ce1f3fc2496db4c4e9113fc3bd7cd9ccb8cbc32e"
+    on_intel do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/captainhook-go/captainhook/releases/download/1.0.6/captainhook_Linux_x86_64.tar.gz"
+        sha256 "237b4191fde5dbf41616f783494698006ea5064103250684da88e1a70e0bfaf9"
 
-      def install
-        bin.install "captainhook"
+        def install
+          bin.install "captainhook"
+        end
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/captainhook-go/captainhook/releases/download/1.0.5/captainhook_Linux_x86_64.tar.gz"
-      sha256 "e4d9d1908eef50e77d137f026e79a2c94a89637f7ad98929f9343a73872eab4d"
+    on_arm do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/captainhook-go/captainhook/releases/download/1.0.6/captainhook_Linux_arm64.tar.gz"
+        sha256 "d3605c5ff7ad67d1bb7660760ee62388769f036c71df4ab4801c6c982634ebcc"
 
-      def install
-        bin.install "captainhook"
+        def install
+          bin.install "captainhook"
+        end
       end
     end
   end
